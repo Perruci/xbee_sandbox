@@ -3,6 +3,10 @@
 This repository is suposed to host some basic examples of Arduino Xbee comunication using platformio framework.
 
 ### Dependencies
+* XCTU Platform
+Needed to configure the Xbee devices.
+Can be downloaded [here](https://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu).
+If you need help to perform the initial setup, check [here](https://www.filipeflop.com/blog/tutorial-wireless-arduino-xbee-shield/)
 * Platformio
 Quick Setup, with Python 2.7:
 ``` (bash)

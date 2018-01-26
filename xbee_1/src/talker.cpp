@@ -1,10 +1,8 @@
 /**
- * Blink
- *
- * Turns on an LED on for one second,
- * then off for one second, repeatedly.
+  Talker Xbee
  */
 #include "Arduino.h"
+#include "SoftwareSerial.h"
 
 #ifndef LED_BUILTIN
 #define LED_BUILTIN 13
