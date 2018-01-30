@@ -1,30 +1,39 @@
-/**
-  Talker Xbee
- */
-#include "Arduino.h"
-#include "SoftwareSerial.h"
-
-#ifndef LED_BUILTIN
-#define LED_BUILTIN 13
-#endif
+//Programa : Comunicacao Xbee utilizando Arduino Xbee Shield
+//Autor : FILIPEFLOP
+#include "arduino.h"
+//Armazena os valores recebidos da serial
+int valores = 0;
+//Armazena o estado do led
+String estado;
 
 void setup()
 {
-  // initialize LED digital pin as an output.
-  pinMode(LED_BUILTIN, OUTPUT);
+  //Define o pino 13 - LED embutido no Arduino - como saida
+  pinMode(13, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop()
 {
-  // turn the LED on (HIGH is the voltage level)
-  digitalWrite(LED_BUILTIN, HIGH);
-
-  // wait for a second
-  delay(1000);
-
-  // turn the LED off by making the voltage LOW
-  digitalWrite(LED_BUILTIN, LOW);
-
-   // wait for a second
-  delay(1000);
+  //Aguarda dados na serial
+  if (Serial.available() > 0)
+  {
+    valores = Serial.read();
+    //Caso seja recebido 0, apaga o led
+    if(valores == '0')
+    {
+      digitalWrite(13, LOW);
+      estado = "apagado";
+    }
+    //Caso seja recebido 1, acende o led
+    else if(valores == '1')
+    {
+      digitalWrite(13, HIGH);
+      estado = "aceso";
+    }
+    //Envia mensagem de confirmacao
+    Serial.print(" Led ");
+    Serial.print(estado);
+    Serial.write(10);
+  }
 }
